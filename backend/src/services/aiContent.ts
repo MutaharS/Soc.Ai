@@ -28,6 +28,7 @@ export const generateContent = async (
       `${AI_SERVICE_URL}/api/generate`,
       params
     );
+
     return response.data.content;
   } catch (error) {
     console.error("Error generating content:", error);

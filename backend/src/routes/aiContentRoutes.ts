@@ -5,6 +5,7 @@ import {
   generateThread,
   generateVariations,
 } from "../controllers/aiContentController";
+import { generateUserProfile } from "../controllers/aiUserController";
 
 const router = Router();
 
@@ -19,5 +20,8 @@ router.post("/thread", generateThread);
 
 // POST /api/ai/variations - Generate content variations without saving
 router.post("/variations", generateVariations);
+
+// POST /api/ai/user - Generate a user profile
+router.post("/user", generateUserProfile);
 
 export default router;

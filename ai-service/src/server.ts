@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import contentGenerationRoutes from "./routes/contentGeneration";
+import generateRoutes from "./routes/generateRoutes";
 
 // Load environment variables
 dotenv.config();
@@ -22,8 +23,9 @@ app.get("/health", (_req, res) => {
   res.json({ status: "healthy" });
 });
 
-// Content generation routes
-app.use("/api/generate", contentGenerationRoutes);
+// Routes
+app.use("/api/content", contentGenerationRoutes); // Legacy routes
+app.use("/api/generate", generateRoutes); // New unified generation routes
 
 // Error handling middleware
 app.use(
