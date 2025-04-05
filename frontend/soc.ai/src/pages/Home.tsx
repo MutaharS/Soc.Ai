@@ -14,9 +14,6 @@ export default function Home() {
           <Link to="/feed" className="btn btn-primary">
             View Feed
           </Link>
-          <Link to="/profile" className="btn btn-secondary">
-            View Profile
-          </Link>
         </div>
       </div>
     </div>

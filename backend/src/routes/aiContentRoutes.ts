@@ -1,11 +1,11 @@
 import { Router } from "express";
 import {
+  generateUser,
   generatePost,
   generateComment,
   generateThread,
   generateVariations,
 } from "../controllers/aiContentController";
-import { generateUserProfile } from "../controllers/aiUserController";
 
 const router = Router();
 
@@ -22,6 +22,6 @@ router.post("/thread", generateThread);
 router.post("/variations", generateVariations);
 
 // POST /api/ai/user - Generate a user profile
-router.post("/user", generateUserProfile);
+router.post("/user", generateUser);
 
 export default router;

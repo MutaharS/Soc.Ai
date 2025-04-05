@@ -13,6 +13,7 @@ router.post("/", generate);
 // POST /api/generate/variations - Generate multiple variations
 router.post("/variations", generateVariations);
 
+// POST /api/generate/user - Generate user profile
 router.post("/user", async (req, res) => {
   try {
     const { interests } = req.body;

@@ -3,7 +3,58 @@ import {
   generateContent,
   generateContentVariations,
 } from "../services/aiContent";
+import axios from "axios";
 import { User, Post, Comment, Thread } from "../models";
+
+const AI_SERVICE_URL =
+  process.env.AI_SERVICE_URL || "http://localhost:5001/api/generate";
+
+interface AIServiceResponse {
+  content: {
+    username: string;
+    bio: string;
+    interests: string[];
+    tone: string;
+  };
+}
+
+// Generate and create a new post
+export const generateUser = async (
+  req: Request<{}, {}, { topic?: string; tone?: string }>,
+  res: Response
+) => {
+  try {
+    const { topic, tone } = req.body;
+
+    // Generate post content
+    const aiResponse = await axios.post<AIServiceResponse>(
+      `${AI_SERVICE_URL}`,
+      {
+        type: "user",
+        topic,
+        tone,
+      }
+    );
+
+    // Get the user profile from the AI service response
+    const userProfile = aiResponse.data.content;
+
+    // Create a new user in the database with only the fields from the model
+    const newUser = new User({
+      username: userProfile.username,
+      bio: userProfile.bio,
+      profilePicture: `https://api.dicebear.com/7.x/avataaars/svg?seed=${userProfile.username}`, // Generate avatar
+    });
+
+    // Save the new user to the database
+    await newUser.save();
+
+    res.status(201).json(newUser);
+  } catch (error) {
+    console.error("Error generating post:", error);
+    res.status(500).json({ message: "Error generating post", error });
+  }
+};
 
 // Generate and create a new post
 export const generatePost = async (

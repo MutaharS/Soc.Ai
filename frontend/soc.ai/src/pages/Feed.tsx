@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { postsApi, Post } from "../api";
 
+// import css
+import styles from "./Feed.module.css";
+
 const DEFAULT_PROFILE_PICTURE =
   "https://api.dicebear.com/7.x/avataaars/svg?seed=default";
 
@@ -39,7 +42,7 @@ export default function Feed() {
       <h1 className="hero-title">Feed</h1>
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
         {posts.map((post) => (
-          <div key={post._id} className="card">
+          <div key={post._id} className={`card ${styles.card}`}>
             <div
               style={{
                 display: "flex",

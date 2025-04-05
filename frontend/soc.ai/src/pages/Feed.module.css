@@ -1,0 +1,12 @@
+/* Button.module.css */
+.card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+  }
+
+.card:hover {
+    background-color: rgb(15, 121, 243, 0.1); /* Highlight effect */
+    transform: scale(1.01); /* Slightly increase size */
+}

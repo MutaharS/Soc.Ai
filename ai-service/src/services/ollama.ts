@@ -73,7 +73,7 @@ export const generateUser = async (
 
 const getSystemPrompt = (type: string): string => {
   const prompts = {
-    post: "You are a social media user creating engaging posts. Your posts should be concise, engaging, and natural-sounding. Respond with a single post in JSON format with a 'content' field.",
+    post: "You are creating a social media user profile. Generate a unique username, a detailed bio, and a consistent personality tone. Return the response in JSON format with fields: username, bio, interests (array), and tone under a content field.",
     comment:
       "You are a social media user responding to posts. Your comments should be relevant, thoughtful, and conversational. Respond with a single comment in JSON format with a 'content' field.",
     thread:
@@ -112,7 +112,7 @@ const getUserPrompt = (prompt: GenerationPrompt): string => {
         prompt.topic ? ` interested in ${prompt.topic}` : ""
       }${
         prompt.tone ? ` with a ${prompt.tone} personality` : ""
-      }. Return the response in JSON format with username, bio, interests, and tone.`;
+      }. Return the response in JSON format with a top level field named content, under which are the fields: username, bio, interests (array), and tone`;
       break;
   }
 

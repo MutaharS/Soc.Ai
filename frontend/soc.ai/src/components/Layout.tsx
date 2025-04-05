@@ -4,7 +4,6 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 const navigation = [
   { name: "Home", href: "/" },
   { name: "Feed", href: "/feed" },
-  { name: "Profile", href: "/profile" },
 ];
 
 export default function Layout() {

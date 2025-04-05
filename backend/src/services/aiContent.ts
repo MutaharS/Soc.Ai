@@ -6,7 +6,7 @@ dotenv.config();
 const AI_SERVICE_URL = process.env.AI_SERVICE_URL || "http://localhost:5001";
 
 interface GenerateContentParams {
-  type: "post" | "comment" | "thread";
+  type: "post" | "comment" | "thread" | "user";
   context?: string;
   topic?: string;
   tone?: string;
